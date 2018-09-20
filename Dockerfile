@@ -1,8 +1,7 @@
 FROM ubuntu
 
-RUN apt-get update
-RUN apt-get install -y desktop-file-utils fuse wget
-RUN wget https://raw.githubusercontent.com/probonopd/AppImages/master/recipes/meta/Recipe
+RUN apt-get update && apt-get install -y desktop-file-utils fuse wget libglib2.0-bin libcairo2 file
+RUN wget https://raw.githubusercontent.com/AppImage/AppImages/master/pkg2appimage
 
-ENTRYPOINT ["/bin/bash", "-ex", "./Recipe"]
+ENTRYPOINT ["/bin/bash", "-ex", "./pkg2appimage"]
 VOLUME /out
